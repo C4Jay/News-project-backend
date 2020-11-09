@@ -1,20 +1,25 @@
 package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "scraped_news_articles")
-public class News {
+public class News implements Serializable {
 
     @Id
-    @GeneratedValue
-    private int id;
+    private Integer news_id;
     private String title;
     private String body;
 
-    public News(int id, String title, String body) {
-        this.id = id;
+
+    public News(Integer news_id, String title, String body) {
+        this.news_id = news_id;
         this.title = title;
         this.body = body;
     }
@@ -22,13 +27,6 @@ public class News {
     public News() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -44,5 +42,13 @@ public class News {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public int getNews_id() {
+        return news_id;
+    }
+
+    public void setNews_id(int news_id) {
+        this.news_id = news_id;
     }
 }
