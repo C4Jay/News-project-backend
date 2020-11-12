@@ -2,25 +2,28 @@ package com.example.demo.models;
 
 public class TestNews {
 
-    private Integer id;
+    private Integer news_id;
     private String title;
-    private Integer pred_news_id;
+    private String body;
+    private String summerized_article;
 
-    public TestNews(Integer id, String title, Integer pred_news_id) {
-        this.id = id;
+
+    public TestNews(Integer news_id, String title, String body, String summerized_article) {
+        this.news_id = news_id;
         this.title = title;
-        this.pred_news_id = pred_news_id;
+        this.body = body;
+        this.summerized_article = summerized_article;
     }
 
     public TestNews() {
     }
 
     public Integer getId() {
-        return id;
+        return news_id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.news_id = news_id;
     }
 
     public String getTitle() {
@@ -31,11 +34,19 @@ public class TestNews {
         this.title = title;
     }
 
-    public Integer getPred_news_id() {
-        return pred_news_id;
+    public String getBody() {
+        return body;
     }
 
-    public void setPred_news_id(Integer pred_news_id) {
-        this.pred_news_id = pred_news_id;
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getSummerized_article() {
+        return summerized_article;
+    }
+
+    public void setSummerized_article(String summerized_article) {
+        this.summerized_article = summerized_article;
     }
 }

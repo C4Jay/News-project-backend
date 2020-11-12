@@ -16,12 +16,13 @@ public class TestNewsDataAccessService {
 
     static final String STATEMENT_SQLMAP1 = "Statement-SQL-MappingDetails";
 
-    public List<TestNews> findComplainsById(@Param("id") Integer id) {
+//    public List<TestNews> findComplainsById(@Param("id") Integer id) {
+      public List<TestNews> findNews() {
         Query querydetails = em.createNativeQuery(
 //                "SELECT  v.id, v.answer, c.description, m.srNo  FROM vitalinfo4 v JOIN complains2 c ON v.complain_id=c.id JOIN complain_metadatascaps1 m ON c.metadata_id=m.id WHERE (v.question like '%ADDRESS OF THE ISSUE OCCURRING LOCATION%') AND (c.id=:id)  ",
-                "SELECT  s.news_id, s.title, c.pred_news_id FROM scraped_news_articles s JOIN classified_news c ON s.news_id=c.news_id WHERE (s.news_id=:id) ",
+                "SELECT  s.news_id, s.title, s.body, c.summerized_article FROM scraped_news_articles s JOIN summerized_news c ON s.news_id=c.news_id",
                 STATEMENT_SQLMAP1);
-        querydetails.setParameter("id", id);
+//        querydetails.setParameter("id", id);
         return querydetails.getResultList();
     }
 
@@ -30,10 +31,12 @@ public class TestNewsDataAccessService {
                     columns = {
                             @ColumnResult(name="news_id",type = Integer.class),
                             @ColumnResult(name="title", type = String.class),
-                            @ColumnResult(name="pred_news_id", type = Integer.class)
+                            @ColumnResult(name="body", type = String.class),
+                            @ColumnResult(name="summerized_article", type = String.class)
 
                     }
             )
-    }) @Entity class SQLMappingCfgEntityy{@Id Integer id;} // <- workaround
+    })  @Entity class SQLMappingCfgEntityy{@Id Integer id;}
+//    @Entity class SQLMappingCfgEntityy{@Id Integer id;} // <- workaround
 
 }

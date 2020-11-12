@@ -53,9 +53,9 @@ public class NewsController {
     }
 
 //    testnews by joining tables
-    @GetMapping("testnews/{id}")
-    public List<TestNews> getTestNewsById(@PathVariable("id") Integer id) {
-        return testNewsDataAccessService.findComplainsById(id);
+    @GetMapping("testnews")
+    public List<TestNews> getTestNewsById() {
+        return testNewsDataAccessService.findNews();
     }
 
 //    all recommended news
