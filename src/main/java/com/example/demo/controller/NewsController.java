@@ -28,6 +28,9 @@ public class NewsController {
     @Autowired
     private SummarizedNewsDataAccessService summarizedNewsDataAccessService;
 
+    @Autowired
+    private CategoricalNewsDataAccessService categoricalNewsDataAccessService;
+
 //    all news
     @GetMapping("news")
     public List<News> getAllNews() {
@@ -80,6 +83,11 @@ public class NewsController {
     @GetMapping("summarized/{id}")
     public Optional<SummarizedNews> getSummarizedNewsById(@PathVariable("id") Integer id) {
         return summarizedNewsDataAccessService.findById(id);
+    }
+
+    @GetMapping("categorical/{id}")
+    public List<CategoricalNews> getNewsByCategory(@PathVariable("id") Integer id) {
+        return categoricalNewsDataAccessService.findComplainsById(id);
     }
 
 
