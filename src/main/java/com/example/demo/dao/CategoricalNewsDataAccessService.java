@@ -16,9 +16,9 @@ public class CategoricalNewsDataAccessService {
 
     static final String STATEMENT_SQLMAP1 = "Statement-SQL-Mapping1";
 
-    public List<CategoricalNews> findComplainsById(@Param("id") Integer id) {
+    public List<CategoricalNews> findComplainsById(@Param("id") String id) {
         Query querysummary = em.createNativeQuery(
-                "SELECT s.news_id, s.title, s.body FROM scraped_news_articles s JOIN classified_news c ON s.news_id=c.news_id WHERE (c.cat_id=:id)  ",
+                "SELECT s.news_id, s.title, s.body FROM scraped_news_articles s JOIN classified_news c ON s.news_id=c.news_id WHERE (c.category=:id)  ",
                 STATEMENT_SQLMAP1);
         querysummary.setParameter("id", id);
         return querysummary.getResultList();

@@ -86,7 +86,7 @@ public class NewsController {
     }
 
     @GetMapping("categorical/{id}")
-    public List<CategoricalNews> getNewsByCategory(@PathVariable("id") Integer id) {
+    public List<CategoricalNews> getNewsByCategory(@PathVariable("id") String id) {
         return categoricalNewsDataAccessService.findComplainsById(id);
     }
 
