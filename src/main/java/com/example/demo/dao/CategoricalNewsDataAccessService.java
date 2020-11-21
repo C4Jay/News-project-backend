@@ -18,7 +18,15 @@ public class CategoricalNewsDataAccessService {
 
     public List<CategoricalNews> findComplainsById(@Param("id") String id) {
         Query querysummary = em.createNativeQuery(
-                "SELECT s.news_id, s.title, s.body, c.subcategory01, c.subcategory02, m.summerized_article FROM scraped_news_articles s JOIN classified_news c ON s.news_id=c.news_id JOIN summerized_news m ON s.news_id=m.news_id  WHERE (c.category=:id)  ",
+                "SELECT s.news_id, s.title, s.body, s.url, s.date, c.subcategory01, c.subcategory02, m.summerized_article FROM scraped_news_articles s JOIN classified_news c ON s.news_id=c.news_id JOIN summerized_news m ON s.news_id=m.news_id  WHERE (c.category=:id)  ",
+                STATEMENT_SQLMAP1);
+        querysummary.setParameter("id", id);
+        return querysummary.getResultList();
+    }
+
+    public List<CategoricalNews> findNewsBySubCategory(@Param("id") String id) {
+        Query querysummary = em.createNativeQuery(
+                "SELECT s.news_id, s.title, s.body, s.url, s.date, c.subcategory01, c.subcategory02, m.summerized_article FROM scraped_news_articles s JOIN classified_news c ON s.news_id=c.news_id JOIN summerized_news m ON s.news_id=m.news_id  WHERE (c.subcategory01=:id)  ",
                 STATEMENT_SQLMAP1);
         querysummary.setParameter("id", id);
         return querysummary.getResultList();
@@ -30,6 +38,8 @@ public class CategoricalNewsDataAccessService {
                             @ColumnResult(name="news_id",type = Integer.class),
                             @ColumnResult(name="title",type = String.class),
                             @ColumnResult(name="body",type = String.class),
+                            @ColumnResult(name="url",type = String.class),
+                            @ColumnResult(name="date",type = String.class),
                             @ColumnResult(name="subcategory01",type = String.class),
                             @ColumnResult(name="subcategory02",type = String.class),
                             @ColumnResult(name="summerized_article",type = String.class),

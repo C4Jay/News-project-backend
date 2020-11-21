@@ -8,6 +8,8 @@ public class CategoricalNews {
     private String title;
     private String body;
 //    private Integer cat_id;
+    private String url;
+    private String date;
     private String subcategory01;
     private String subcategory02;
     private String summerized_article;
@@ -19,16 +21,13 @@ public class CategoricalNews {
     public CategoricalNews() {
     }
 
-    public CategoricalNews(Integer news_id,
-//                           Integer cat_id,
-                           String title, String body,
-                           String subcategory01,
-                           String subcategory02,
-                           String summerized_article) {
+
+    public CategoricalNews(Integer news_id, String title, String body, String url, String date, String subcategory01, String subcategory02, String summerized_article) {
         this.news_id = news_id;
-//        this.cat_id = cat_id;
         this.title = title;
         this.body = body;
+        this.url = url;
+        this.date = date;
         this.subcategory01 = subcategory01;
         this.subcategory02 = subcategory02;
         this.summerized_article = summerized_article;
@@ -88,5 +87,21 @@ public class CategoricalNews {
 
     public void setSummerized_article(String summerized_article) {
         this.summerized_article = summerized_article;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

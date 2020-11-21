@@ -97,4 +97,9 @@ public class NewsController {
     }
 
 
+    @GetMapping("subcategory/{id}")
+    public List<CategoricalNews> getNewsBySubCategory(@PathVariable("id") String id) {
+        return categoricalNewsDataAccessService.findNewsBySubCategory(id);
+    }
+
 }
