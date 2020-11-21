@@ -31,6 +31,9 @@ public class NewsController {
     @Autowired
     private CategoricalNewsDataAccessService categoricalNewsDataAccessService;
 
+    @Autowired
+    private NewsAllDataAccessService newsAllDataAccessService;
+
 //    all news
     @GetMapping("news")
     public List<News> getAllNews() {
@@ -100,6 +103,11 @@ public class NewsController {
     @GetMapping("subcategory/{id}")
     public List<CategoricalNews> getNewsBySubCategory(@PathVariable("id") String id) {
         return categoricalNewsDataAccessService.findNewsBySubCategory(id);
+    }
+
+    @GetMapping("allnews")
+    public List<NewsAll> getNewsWithCat() {
+        return newsAllDataAccessService.findNews();
     }
 
 }
