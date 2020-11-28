@@ -6,17 +6,21 @@ public class TestNews {
     private String title;
     private String body;
     private String summerized_article;
+    private String date;
 
 
-    public TestNews(Integer news_id, String title, String body, String summerized_article) {
+    public TestNews(Integer news_id, String title, String body, String summerized_article, String date) {
         this.news_id = news_id;
         this.title = title;
         this.body = body;
         this.summerized_article = summerized_article;
+        this.date = date;
     }
 
     public TestNews() {
     }
+
+
 
     public Integer getId() {
         return news_id;
@@ -48,5 +52,21 @@ public class TestNews {
 
     public void setSummerized_article(String summerized_article) {
         this.summerized_article = summerized_article;
+    }
+
+    public Integer getNews_id() {
+        return news_id;
+    }
+
+    public void setNews_id(Integer news_id) {
+        this.news_id = news_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
